@@ -64,6 +64,104 @@
     <h1 class="page-type-title"></h1>
     
     
+    <article id="post-题目：在kafka集群中部署Eagle运维监控" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+
+    
+    <div class="article-meta">
+      <a href="/2023/06/24/%E9%A2%98%E7%9B%AE%EF%BC%9A%E5%9C%A8kafka%E9%9B%86%E7%BE%A4%E4%B8%AD%E9%83%A8%E7%BD%B2Eagle%E8%BF%90%E7%BB%B4%E7%9B%91%E6%8E%A7/" class="article-date">
+  <time datetime="2023-06-24T09:15:52.268Z" itemprop="datePublished">2023-06-24</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+        
+      
+      
+        <p>题目：在kafka集群中部署Eagle运维监控</p>
+<p>1．项目来源及背景</p>
+<p>kafka 自身并没有继承监控管理系统, 因此对 kafka 的监控管理比较不便, 好在有大量的第三方监控管理系统来使用,常见的有: </p>
+<p>Kafka Eagle </p>
+<p>KafkaOffsetMonitor </p>
+<p>Kafka Manager(雅虎开源的 Kafka 集群管理器) </p>
+<p>Kafka Web Console </p>
+<p> 还有 JMX 接口自开发监控管理系统</p>
+<p>其中，Kafka Eagle最为流行，本项目则希望同学们可以成功部署Kafka Eagle，完成对kafka集群的基本监控。</p>
+<p>2.系统需求分析</p>
+<p>(1).安装包下载地址</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/smartloli/kafka-eagle-bin/">https://github.com/smartloli/kafka-eagle-bin/</a>	</p>
+<p>(2).上传安装包，解压</p>
+<p><img src="E:\image_8_2\1.png" alt="1"></p>
+<p>(3). 配置环境变量:JAVA_HOME 和 KE_HOME</p>
+<p>vi &#x2F;etc&#x2F;profile </p>
+<p>export JAVA_HOME&#x3D;&#x2F;usr&#x2F;java&#x2F;jdk1.8</p>
+<p>export PATH&#x3D;$PATH:$JAVA_HOME&#x2F;bin</p>
+<p>export KE_HOME&#x3D;&#x2F;export&#x2F;server&#x2F;kafka-eagle</p>
+<p>export PATH&#x3D;$PATH:$KE_HOME&#x2F;bin</p>
+<p><img src="E:\image_8_2\2.png" alt="2"></p>
+<p><img src="E:\image_8_2\3.png" alt="3"></p>
+<p>(4).配置 KafkaEagle</p>
+<p>cd &#x2F;export&#x2F;server&#x2F;kafka-eagle&#x2F;conf </p>
+<p>vi system-config.properties</p>
+<p>需要更改的地方:</p>
+<p>kafka.eagle.zk.cluster.alias&#x3D;cluster1</p>
+<p>cluster1.zk.list&#x3D;node1:2181,node2:2181,node3:2181</p>
+<p>cluster1.kafka.eagle.broker.size&#x3D;3</p>
+<p>kafka.eagle.url&#x3D;jdbc:sqlite:&#x2F;export&#x2F;data&#x2F;db&#x2F;ke.db</p>
+<p><img src="E:\image_8_2\4.png" alt="4"></p>
+<p><img src="E:\image_8_2\5.png" alt="5"></p>
+<p>(5). 启动Eagle</p>
+<p>&#x2F;export&#x2F;server&#x2F;kafka-eagle&#x2F;bin&#x2F;ke.sh start</p>
+<p><img src="E:\image_8_2\6.png" alt="6"></p>
+<p>(6).最终结果</p>
+<p><img src="E:\image_8_2\7.png" alt="7"></p>
+<p><img src="E:\image_8_2\8.png" alt="8"></p>
+<p>对Eagle中的各项功能进行学习</p>
+<ol>
+<li><p>导览行</p>
+<p>Topic进行介绍</p>
+<p><img src="E:\image_8_2\9.png" alt="9"></p>
+</li>
+</ol>
+<p>Consumers消费者</p>
+<p>Cluster介绍</p>
+<p><img src="E:\image_8_2\10.png" alt="10"></p>
+<p>Metrics介绍</p>
+<p><img src="E:\image_8_2\11.png" alt="11"></p>
+<p>Alarm设置报警邮箱</p>
+<p>中间栏</p>
+<p><img src="E:\image_8_2\12.png" alt="12"></p>
+<p>2.支持spl查询页面</p>
+<p><img src="E:\image_8_2\13.png" alt="13"></p>
+<p>3.向topic发送数据</p>
+<p><img src="E:\image_8_2\14.png" alt="14"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/06/24/%E9%A2%98%E7%9B%AE%EF%BC%9A%E5%9C%A8kafka%E9%9B%86%E7%BE%A4%E4%B8%AD%E9%83%A8%E7%BD%B2Eagle%E8%BF%90%E7%BB%B4%E7%9B%91%E6%8E%A7/" data-id="clj9tk7d00007yotu8b1k2y78" class="article-share-link">
+        Share
+      </a>
+      
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+    
     <article id="post-Flume(2)" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -131,7 +229,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/06/17/Flume(2)/" data-id="clj03i3ds00020ctu2sishfj8" class="article-share-link">
+      <a data-url="http://example.com/2023/06/17/Flume(2)/" data-id="clj9tk7cu0001yotufg050u0y" class="article-share-link">
         Share
       </a>
       
@@ -241,7 +339,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/06/17/Flume(1)/" data-id="clj03i3dq00010ctub78bd4nd" class="article-share-link">
+      <a data-url="http://example.com/2023/06/17/Flume(1)/" data-id="clj9tk7co0000yotu0lx85b98" class="article-share-link">
         Share
       </a>
       
@@ -355,7 +453,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/06/17/Zookeeper/" data-id="clj03i3du00050ctu504ccwn3" class="article-share-link">
+      <a data-url="http://example.com/2023/06/17/Zookeeper/" data-id="clj9tk7cx0004yotu95i0frzo" class="article-share-link">
         Share
       </a>
       
@@ -687,7 +785,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/06/17/Sqoop(2)/" data-id="clj03i3du00060ctudv7qalpb" class="article-share-link">
+      <a data-url="http://example.com/2023/06/17/Sqoop(2)/" data-id="clj9tk7cz0006yotuhog7hb0i" class="article-share-link">
         Share
       </a>
       
@@ -775,7 +873,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/06/17/Sqoop(1)/" data-id="clj03i3ds00030ctu8o753imj" class="article-share-link">
+      <a data-url="http://example.com/2023/06/17/Sqoop(1)/" data-id="clj9tk7cy0005yotu46gx5bel" class="article-share-link">
         Share
       </a>
       
@@ -932,7 +1030,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/06/17/Kafka/" data-id="clj03i3dt00040ctu7qwx9dzq" class="article-share-link">
+      <a data-url="http://example.com/2023/06/17/Kafka/" data-id="clj9tk7cv0002yotu3f0k4c3f" class="article-share-link">
         Share
       </a>
       
@@ -1017,7 +1115,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/06/17/Flume(3)/" data-id="clj03i3dk00000ctub7zq4xkm" class="article-share-link">
+      <a data-url="http://example.com/2023/06/17/Flume(3)/" data-id="clj9tk7cw0003yotuhnbu34v1" class="article-share-link">
         Share
       </a>
       
